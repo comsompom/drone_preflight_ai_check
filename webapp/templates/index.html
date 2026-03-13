@@ -10,25 +10,50 @@
     </p>
 </section>
 
+<section class="upload-panel">
+    <div class="panel-head">
+        <span class="panel-label">1. UPLOAD PARAMETER FILE</span>
+        <span class="panel-id">.param / .waypoints / .txt</span>
+    </div>
+    <div class="upload-container">
+        <p class="upload-desc">Choose a file from your computer, add optional context, then click <strong>Upload to agent</strong>.</p>
+        <div class="upload-form">
+            <label class="input-label">Choose file</label>
+            <div class="file-upload-wrap">
+                <input type="file" id="param-file" class="file-input" accept=".param,.waypoints,.txt,.waypoint,text/plain" aria-label="Choose parameter file">
+                <span class="file-name" id="file-name">No file chosen</span>
+            </div>
+            <label class="input-label" for="upload-intro">Context line (optional) — e.g. plane, 18 kg, 3.2 m wingspan, catapult</label>
+            <input type="text" id="upload-intro" class="upload-intro" placeholder="Plane, 18 kg, 3.2 m wingspan, catapult, land landing">
+            <div class="form-actions">
+                <button type="button" class="btn-upload" id="btn-upload" disabled>
+                    <span class="btn-text">UPLOAD TO AGENT</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="chat-panel">
     <div class="panel-head">
-        <span class="panel-label">AGENT COMMS</span>
+        <span class="panel-label">2. OR TYPE / PASTE HERE (NO FILE)</span>
     </div>
     <div class="chat-container">
         <div class="chat-messages" id="chat-messages">
             <div class="message agent" id="welcome-msg">
                 <span class="msg-label">SYSTEM</span>
                 <div class="msg-body">
-                    Preflight Inspector online. Send drone type, specs, takeoff method, and parameters for Phase 1 check. Paste .param or mission text in the input below.
+                    Preflight Inspector online. Upload a file above, or type/paste a message below and click <strong>SEND</strong>.
                 </div>
             </div>
         </div>
         <form class="chat-form" id="chat-form">
+            <label class="input-label" for="message-input">Message, pasted parameters, or follow-up reply</label>
             <textarea
                 id="message-input"
                 name="message"
                 rows="4"
-                placeholder="Drone type, weight, wingspan (plane), takeoff method, and parameter list or mission data…"
+                placeholder="e.g. Plane, 18 kg, catapult — or paste your parameter list or mission text here"
                 required
             ></textarea>
             <div class="form-actions">

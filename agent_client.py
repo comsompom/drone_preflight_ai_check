@@ -3,20 +3,29 @@ ArduPilot Preflight Agent client.
 Uses DigitalOcean Gradient AI agent endpoint (OpenAI-compatible API).
 """
 import os
+from pathlib import Path
 from openai import OpenAI
 from dotenv import load_dotenv
 
-load_dotenv()
+# Load .env from project root (same folder as this file) so it works regardless of CWD
+_env_path = Path(__file__).resolve().parent / ".env"
+load_dotenv(_env_path)
 
-AGENT_URL = os.getenv("AGENT_URL", "").rstrip("/")
-AGENT_API_KEY = os.getenv("AGENT_API_KEY", "")
+AGENT_URL = (os.getenv("AGENT_URL") or "").strip().rstrip("/")
+AGENT_API_KEY = (os.getenv("AGENT_API_KEY") or "").strip()
 
 
 def get_client() -> OpenAI:
     """Build OpenAI client for the agent endpoint."""
-    if not AGENT_URL or not AGENT_API_KEY:
+    missing = []
+    if not AGENT_URL:
+        missing.append("AGENT_URL")
+    if not AGENT_API_KEY:
+        missing.append("AGENT_API_KEY")
+    if missing:
         raise ValueError(
-            "Set AGENT_URL and AGENT_API_KEY in .env (copy from .env.example)."
+            f"Set {', '.join(missing)} in .env (copy from .env.example). "
+            f"Ensure .env is in the project root: {Path(__file__).resolve().parent}"
         )
     base_url = f"{AGENT_URL}/api/v1/"
     return OpenAI(base_url=base_url, api_key=AGENT_API_KEY)

@@ -16,6 +16,9 @@
   --success: #3d5c3d;
   --font-mono: "Share Tech Mono", "Consolas", monospace;
   --font-ui: "Rajdhani", "Segoe UI", sans-serif;
+  --input-bg: #0d0d0d;
+  --input-text: #e6d98a;
+  --input-placeholder: #8a7d4a;
 }
 
 * {
@@ -111,6 +114,7 @@ body {
 
 /* Panels */
 .mission-panel,
+.upload-panel,
 .chat-panel {
   background: var(--bg-panel);
   border: 1px solid var(--border);
@@ -118,6 +122,7 @@ body {
 }
 
 .mission-panel .panel-head,
+.upload-panel .panel-head,
 .chat-panel .panel-head {
   padding: 0.5rem 1rem;
   background: var(--bg-input);
@@ -145,6 +150,116 @@ body {
   padding: 1rem;
   font-size: 0.9rem;
   color: var(--text-dim);
+}
+
+/* Upload parameters panel */
+.upload-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+}
+
+.upload-panel .panel-head {
+  padding: 0.5rem 1rem;
+  background: var(--bg-input);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.upload-container {
+  padding: 1rem;
+}
+
+.upload-desc {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.file-upload-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.file-input {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text);
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.5rem;
+  max-width: 100%;
+}
+
+.file-input::file-selector-button {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.file-name {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.input-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--tan);
+  margin-bottom: 0.35rem;
+}
+
+.upload-intro {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  color: var(--input-text);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.upload-intro::placeholder {
+  color: var(--input-placeholder);
+}
+
+.btn-upload {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  padding: 0.5rem 1.25rem;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.btn-upload:hover:not(:disabled) {
+  background: var(--border);
+  color: var(--text);
+}
+
+.btn-upload:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Chat */
@@ -202,13 +317,18 @@ body {
   padding-top: 1rem;
 }
 
+.chat-form .input-label {
+  margin-top: 0.5rem;
+}
+
 .chat-form textarea {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 0.75rem;
-  background: var(--bg-input);
+  margin-top: 0.35rem;
+  background: var(--input-bg);
   border: 1px solid var(--border);
-  color: var(--text);
+  color: var(--input-text);
   font-family: var(--font-mono);
   font-size: 0.85rem;
   resize: vertical;
@@ -216,7 +336,7 @@ body {
 }
 
 .chat-form textarea::placeholder {
-  color: var(--text-dim);
+  color: var(--input-placeholder);
 }
 
 .chat-form textarea:focus {
