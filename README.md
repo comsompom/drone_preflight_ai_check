@@ -6,7 +6,8 @@ AI-powered preflight configuration and mission checker for ArduPilot (ArduCopter
 
 ## Demo
 
-**[Plane preflight check & flight (3.2 m wingspan, 18 kg)](https://www.youtube.com/watch?v=PhpToEW_G1I)** — Video demo: we run the fixed-wing (3.2 m wingspan, 18 kg) through the preflight agent check, then fly the plane.
+- **[Plane preflight check & flight (3.2 m wingspan, 18 kg)](https://www.youtube.com/watch?v=PhpToEW_G1I)** — Video: fixed-wing (3.2 m wingspan, 18 kg) through the preflight agent check, then flight.
+- **[Flask web app demo](https://www.youtube.com/watch?v=U-wCpUDEEk0)** — Video: upload parameter file and chat with the agent in the military-style UI.
 
 ## Architecture
 
