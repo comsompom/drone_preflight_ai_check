@@ -1,6 +1,12 @@
 # ArduPilot Preflight AI Check
 
+![ArduPilot Preflight Inspector](drone_preflight_logo.jpg)
+
 AI-powered preflight configuration and mission checker for ArduPilot (ArduCopter, ArduPlane), built for the **DigitalOcean Gradient™ AI Hackathon**. The agent guides you through parameter checks and mission verification using a multi-phase workflow.
+
+## Demo
+
+**[Plane preflight check & flight (3.2 m wingspan, 18 kg)](https://www.youtube.com/watch?v=PhpToEW_G1I)** — Video demo: we run the fixed-wing (3.2 m wingspan, 18 kg) through the preflight agent check, then fly the plane.
 
 ## Architecture
 
@@ -39,6 +45,18 @@ python run_demo.py
 
 You should see the agent’s reply to the sample plane preflight message.
 
+## Web app (Flask)
+
+The Flask UI lives in the **`webapp/`** folder. Run it from the **project root** so it can find `.env` and `agent_client.py`:
+
+```bash
+python webapp/app.py
+```
+
+Open [http://127.0.0.1:5000](http://127.0.0.1:5000). Enter your message (e.g. drone type, specs, param list) and click **SEND** to get the agent’s preflight report.
+
+To use a different port: `PORT=8080 python webapp/app.py`.
+
 ## Scripts
 
 | Script | Description |
@@ -71,7 +89,13 @@ python send_params.py my_waypoints.txt --intro "Quad, mission flight"
 
 ## Files
 
+- **`webapp/`** — Flask app (military-style UI):
+  - `webapp/app.py` — Web server and `/api/chat` endpoint.
+  - `webapp/templates/` — HTML (base + index).
+  - `webapp/static/css/style.css` — Military theme (dark green, olive, monospace).
+  - `webapp/static/js/app.js` — Chat form and API calls.
 - `agent_client.py` — Client that loads `.env` and calls the agent (OpenAI SDK).
+- `.env` (project root) — Used by both CLI scripts and `webapp/app.py`; do not commit.
 - `.env.example` — Template for `AGENT_URL` and `AGENT_API_KEY`.
 - `solution.md` — Agent instructions and project notes.
 - `description.md` — Hackathon idea and architecture.

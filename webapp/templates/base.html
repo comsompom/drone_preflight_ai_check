@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ArduPilot Preflight Inspector{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo-block">
+                <span class="logo-badge">UAV</span>
+                <h1 class="site-title">ArduPilot Preflight Inspector</h1>
+                <span class="classification">PREFLIGHT CONFIG & MISSION VERIFICATION</span>
+            </div>
+            <div class="header-meta">
+                <span class="status-indicator" id="status-indicator">— STANDBY</span>
+            </div>
+        </div>
+    </header>
+    <main class="site-main">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <span>DigitalOcean Gradient™ AI Hackathon</span>
+            <span class="sep">|</span>
+            <span>ArduCopter / ArduPlane</span>
+        </div>
+    </footer>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

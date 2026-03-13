@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="mission-panel">
+    <div class="panel-head">
+        <span class="panel-label">MISSION BRIEF</span>
+        <span class="panel-id">PHASE 1 → 3</span>
+    </div>
+    <p class="mission-desc">
+        Provide drone type, specs, takeoff method, and parameter list. The agent will verify configuration and mission safety.
+    </p>
+</section>
+
+<section class="chat-panel">
+    <div class="panel-head">
+        <span class="panel-label">AGENT COMMS</span>
+    </div>
+    <div class="chat-container">
+        <div class="chat-messages" id="chat-messages">
+            <div class="message agent" id="welcome-msg">
+                <span class="msg-label">SYSTEM</span>
+                <div class="msg-body">
+                    Preflight Inspector online. Send drone type, specs, takeoff method, and parameters for Phase 1 check. Paste .param or mission text in the input below.
+                </div>
+            </div>
+        </div>
+        <form class="chat-form" id="chat-form">
+            <textarea
+                id="message-input"
+                name="message"
+                rows="4"
+                placeholder="Drone type, weight, wingspan (plane), takeoff method, and parameter list or mission data…"
+                required
+            ></textarea>
+            <div class="form-actions">
+                <button type="submit" class="btn-send" id="btn-send">
+                    <span class="btn-text">SEND</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% endblock %}
