@@ -98,8 +98,24 @@ python send_params.py my_waypoints.txt --intro "Quad, mission flight"
 - `agent_client.py` — Client that loads `.env` and calls the agent (OpenAI SDK).
 - `.env` (project root) — Used by both CLI scripts and `webapp/app.py`; do not commit.
 - `.env.example` — Template for `AGENT_URL` and `AGENT_API_KEY`.
-- `solution.md` — Agent instructions and project notes.
-- `description.md` — Hackathon idea and architecture.
+- `tests/` — Unit tests (pytest).
+
+## Testing
+
+Run the test suite from the project root:
+
+```bash
+pip install -r requirements.txt
+pytest
+```
+
+With coverage:
+
+```bash
+pytest --cov=. --cov-report=term-missing --ignore=webapp
+```
+
+Tests cover: `agent_client` (get_client validation, send_message with mocked API), Flask app (index, `/api/chat` validation and responses), `send_params` (message building, file handling), and `run_demo` (demo message and send_message call). No real API calls are made; the agent is mocked in tests.
 
 ## License
 
